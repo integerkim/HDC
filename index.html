@@ -30,6 +30,20 @@
     .figure-caption { text-align: center; color: #6b7280; font-size: 0.95rem; }
     .pub-links .button { margin: 0.25rem; }
     footer a { color: #4a5568; }
+    /* New Sections Layout */
+    .triple-video-row { display: flex; gap: 1rem; flex-wrap: wrap; }
+    .triple-video-row .video-col { flex: 1 1 300px; text-align: center; }
+    .triple-video-row video { width: 100%; border-radius: 8px; background:#000; }
+    .video-caption { margin-top: .5rem; font-size: 0.9rem; color:#4b5563; font-weight:500; }
+    .dataset-flex { display:flex; flex-wrap:wrap; gap:1.5rem; align-items:flex-start; }
+    .dataset-media { flex: 1 1 340px; }
+    .dataset-media img, .dataset-media video { width:100%; border-radius:8px; background:#000; }
+    .dataset-desc { flex: 1 1 380px; }
+    .section-sep { height:2px; background:linear-gradient(90deg,#e5e7eb,#9ca3af,#e5e7eb); margin:3rem 0 2rem; border:none; }
+    @media (max-width: 900px){
+      .triple-video-row { flex-direction:column; }
+      .dataset-flex { flex-direction:column; }
+    }
   </style>
 </head>
 <body>
@@ -67,6 +81,50 @@
     </div>
   </div>
 </section>
+<section class="section" id="experiment">
+  <div class="container is-max-desktop">
+    <h2 class="title is-3"><i class="fa-solid fa-flask"></i> Experiment</h2>
+    <div class="content">
+      <p>The following comparative visualization illustrates the hierarchical refinement stages in our choreography generation pipeline.</p>
+      <div class="triple-video-row">
+        <div class="video-col">
+          <video src="video/fakelove_beat.mp4" autoplay muted loop playsinline></video>
+          <div class="video-caption">Left: Beat-aware generation (phrase-level initialization)</div>
+        </div>
+        <div class="video-col">
+          <video src="video/fakelove_wav.mp4" autoplay muted loop playsinline></video>
+          <div class="video-caption">Center: Waveform-aware enhancement (energy-aligned refinement)</div>
+        </div>
+        <div class="video-col">
+          <video src="video/fakelove_all.mp4" autoplay muted loop playsinline></video>
+          <div class="video-caption">Right: Plausibility-aware enhancement (global continuity & detail)</div>
+        </div>
+      </div>
+      <p style="margin-top:1.25rem; font-size:0.95rem; color:#374151;">Left is the beat-aware generation stage, the center shows waveform-aware enhancement, and the right displays the plausibility-aware enhancement model producing globally coherent choreography.</p>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="dataset">
+  <div class="container is-max-desktop">
+    <h2 class="title is-3"><i class="fa-regular fa-folder-open"></i> Dataset</h2>
+    <div class="content">
+      <div class="dataset-flex">
+        <div class="dataset-media">
+          <img src="image/image_sample.jpg" alt="Sample dataset visualization" />
+        </div>
+        <div class="dataset-media">
+          <video src="video/gt_goodboy.mp4" controls muted loop playsinline></video>
+        </div>
+        <div class="dataset-desc">
+          <p><strong>Dataset Overview.</strong> Provide an overview of the curated music–dance pairs, annotation strategy (phrases, beats, waveform proxies), and style labels utilized for semantic modulation. This placeholder paragraph can be expanded with statistics such as number of hours, phrase count, dancer diversity, and genre coverage.</p>
+          <p>Add further explanation here about preprocessing (e.g., beat tracking, phrase segmentation heuristics, motion normalization), ethical considerations, and licensing notes as needed.</p>
+        </div>
+      </div>
+      <p style="margin-top:1rem; font-size:0.9rem; color:#4b5563;">Below you may insert additional notes or tables describing splits, augmentation strategies, or evaluation subsets.</p>
+    </div>
+  </div>
+</section>
 
 <section class="section" id="abstract">
   <div class="container is-max-desktop">
@@ -78,7 +136,7 @@
 </section>
 
 <section class="section" id="figure">
-  <figure class="image" style="max-width: 800px; margin: 0 auto;">
+  <figure class="image" style="max-width: 1600px; margin: 0 auto;">
     <img src="image/cvpr_fig1_revise.png"
          alt="HDC main figure"
          style="width: 100%; height: auto; border-radius: 8px;">
