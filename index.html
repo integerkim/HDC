@@ -81,6 +81,42 @@
     </div>
   </div>
 </section>
+
+<section class="section" id="abstract">
+  <div class="container is-max-desktop">
+    <h2 class="title is-3"><i class="fa-regular fa-file-lines"></i> Abstract</h2>
+    <div class="content">
+      <p>Choreography is not a mere sequence of improvised movements to music. Rather, it is a systematic creative process grounded in the structural interpretation of music. Choreographers design movements at the phrase level, tune them to musical beats and energy, and seamlessly connect phrases. In this paper, we propose HDC: A Hierarchical Diffusion model for Choreography, a framework inspired by the real-world workflow of choreography creation. HDC takes in-the-wild music as input and (1) divides it into phrases to generate beat-based dances, (2) enhances each dance using waveform-based features, and (3) generates the full choreography by concatenating all phrases and then enhances it with deep features extracted from Jukebox AI to resolve inter-phrase discontinuities and strengthen plausibility. Building on this hierarchical generation framework, we further introduce semantic text stylization. Semantic prompt such as “Like Michael Jackson” is interpreted by a large language model and mapped to controllable dance features that modulate the strength of each enhancement, allowing intuitive and high-level style conditioning. To evaluate whether the generated choreography adheres to real-world choreographic primitives, we propose new metrics comprising Phrase Diversity, Feature Alignment, and Text Stylization Score. Experimental results demonstrate that HDC outperforms state-of-the-art models in generating choreography and exhibits strong text stylization capability.</p>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="figure">
+  <div class="container is-max-desktop">
+    <figure class="image" style="margin:0 auto;">
+      <img src="image/cvpr_fig1_revise.png"
+           alt="HDC main figure"
+           style="width:100%; height:auto; border-radius:8px;">
+    </figure>
+    <p class="figure-caption" style="margin-top:0.75rem;">Figure 1. HDC framework: phrase-level generation, waveform-aware enhancement, and global plausibility.</p>
+  </div>
+</section>
+<section class="section" id="method">
+  <div class="container is-max-desktop">
+    <h2 class="title is-3"><i class="fa-solid fa-diagram-project"></i> Method</h2>
+    <div class="content">
+      <p>Inspired by choreographic creation theory, HDC interprets music and progressively completes the choreography through a hierarchical pipeline comprising four stages:</p>
+      <ol>
+        <li><strong>Phrase-level Beat-aware Generation:</strong> The input music is segmented into phrases—the minimal choreographic units—and an initial beat-aware dance is generated for each phrase.</li>
+        <li><strong>Waveform-aware Enhancement:</strong> Each beat-aware dance is refined by incorporating waveform information that reflects changes in musical energy.</li>
+        <li><strong>Global Plausibility Enhancement:</strong> All phrase-level dances are concatenated, and inter-phrase discontinuities are resolved to improve global naturalness and detail.</li>
+        <li><strong>Choreography Stylization with Semantic Text:</strong> Text prompts such as “Like Michael Jackson” are interpreted to modulate enhancement strengths, achieving high-level style conditioning.</li>
+      </ol>
+      <p>Enhancement refers to generating a target choreography that jointly incorporates the target intention with the reference dance. This is achieved via the <strong>DanceEdit</strong> module, which modulates diffusion timesteps without additional training, enabling the fusion of reference and condition intentions.</p>
+    </div>
+  </div>
+</section>
+
 <section class="section" id="experiment">
   <div class="container is-max-desktop">
     <h2 class="title is-3"><i class="fa-solid fa-flask"></i> Experiment</h2>
@@ -122,41 +158,6 @@
         </div>
       </div>
       <p style="margin-top:1rem; font-size:0.9rem; color:#4b5563;">Below you may insert additional notes or tables describing splits, augmentation strategies, or evaluation subsets.</p>
-    </div>
-  </div>
-</section>
-
-<section class="section" id="abstract">
-  <div class="container is-max-desktop">
-    <h2 class="title is-3"><i class="fa-regular fa-file-lines"></i> Abstract</h2>
-    <div class="content">
-      <p>Choreography is not a mere sequence of improvised movements to music. Rather, it is a systematic creative process grounded in the structural interpretation of music. Choreographers design movements at the phrase level, tune them to musical beats and energy, and seamlessly connect phrases. In this paper, we propose HDC: A Hierarchical Diffusion model for Choreography, a framework inspired by the real-world workflow of choreography creation. HDC takes in-the-wild music as input and (1) divides it into phrases to generate beat-based dances, (2) enhances each dance using waveform-based features, and (3) generates the full choreography by concatenating all phrases and then enhances it with deep features extracted from Jukebox AI to resolve inter-phrase discontinuities and strengthen plausibility. Building on this hierarchical generation framework, we further introduce semantic text stylization. Semantic prompt such as “Like Michael Jackson” is interpreted by a large language model and mapped to controllable dance features that modulate the strength of each enhancement, allowing intuitive and high-level style conditioning. To evaluate whether the generated choreography adheres to real-world choreographic primitives, we propose new metrics comprising Phrase Diversity, Feature Alignment, and Text Stylization Score. Experimental results demonstrate that HDC outperforms state-of-the-art models in generating choreography and exhibits strong text stylization capability.</p>
-    </div>
-  </div>
-</section>
-
-<section class="section" id="figure">
-  <figure class="image" style="max-width: 1600px; margin: 0 auto;">
-    <img src="image/cvpr_fig1_revise.png"
-         alt="HDC main figure"
-         style="width: 100%; height: auto; border-radius: 8px;">
-  </figure>
-  <p class="figure-caption">
-    Figure 1. HDC framework: phrase-level generation, waveform-aware enhancement, and global plausibility.
-  </p>
-</section>
-<section class="section" id="method">
-  <div class="container is-max-desktop">
-    <h2 class="title is-3"><i class="fa-solid fa-diagram-project"></i> Method</h2>
-    <div class="content">
-      <p>Inspired by choreographic creation theory, HDC interprets music and progressively completes the choreography through a hierarchical pipeline comprising four stages:</p>
-      <ol>
-        <li><strong>Phrase-level Beat-aware Generation:</strong> The input music is segmented into phrases—the minimal choreographic units—and an initial beat-aware dance is generated for each phrase.</li>
-        <li><strong>Waveform-aware Enhancement:</strong> Each beat-aware dance is refined by incorporating waveform information that reflects changes in musical energy.</li>
-        <li><strong>Global Plausibility Enhancement:</strong> All phrase-level dances are concatenated, and inter-phrase discontinuities are resolved to improve global naturalness and detail.</li>
-        <li><strong>Choreography Stylization with Semantic Text:</strong> Text prompts such as “Like Michael Jackson” are interpreted to modulate enhancement strengths, achieving high-level style conditioning.</li>
-      </ol>
-      <p>Enhancement refers to generating a target choreography that jointly incorporates the target intention with the reference dance. This is achieved via the <strong>DanceEdit</strong> module, which modulates diffusion timesteps without additional training, enabling the fusion of reference and condition intentions.</p>
     </div>
   </div>
 </section>
