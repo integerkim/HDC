@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="HDC: A Hierarchical Diffusion Model for Choreography — Project page" />
+  <meta name="keywords" content="HDC, choreography generation, diffusion, dance, music" />
+  <title>HDC: Hierarchical Diffusion Model for Choreography</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+
+  <style>
+    :root { --accent: #111827; }
+    html, body { font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Noto Sans, Helvetica, Arial, sans-serif; }
+    .hero.is-primary { background: linear-gradient(135deg, #111827 0%, #374151 100%); }
+    .hero .title, .hero .subtitle { color: #fff; }
+    .figure-placeholder {
+      border: 2px dashed #c4c4c4;
+      border-radius: 12px;
+      aspect-ratio: 16/9;
+      width: 100%;
+      display: grid;
+      place-items: center;
+      background: #fafafa;
+      color: #6b7280;
+      margin: 1rem auto;
+    }
+    .figure-caption { text-align: center; color: #6b7280; font-size: 0.95rem; }
+    .pub-links .button { margin: 0.25rem; }
+    footer a { color: #4a5568; }
+  </style>
+</head>
+<body>
+
+<nav class="navbar is-spaced" role="navigation" aria-label="main navigation">
+  <div class="navbar-brand">
+    <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navMenu">
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+    </a>
+  </div>
+  <div id="navMenu" class="navbar-menu">
+    <div class="navbar-start" style="flex-grow: 1; justify-content: center;">
+      <a class="navbar-item" href="#abstract"><i class="fa-regular fa-file-lines"></i>&nbsp;Abstract</a>
+      <a class="navbar-item" href="#figure"><i class="fa-regular fa-image"></i>&nbsp;Figure</a>
+      <a class="navbar-item" href="#method"><i class="fa-solid fa-diagram-project"></i>&nbsp;Method</a>
+      <a class="navbar-item" href="#bibtex"><i class="fa-solid fa-code"></i>&nbsp;BibTeX</a>
+    </div>
+  </div>
+</nav>
+
+<section class="hero is-primary">
+  <div class="hero-body">
+    <div class="container is-max-desktop has-text-centered">
+      <h1 class="title is-1">HDC: Hierarchical Diffusion Model for Choreography</h1>
+      <p class="subtitle is-4">CVPR 2026 Submission</p>
+      <div class="is-size-5" style="margin-top: 1rem;"><strong>Jungsu Kim</strong></div>
+      <div class="pub-links" style="margin-top: 1.25rem;">
+        <a class="button is-dark is-rounded" href="#"><i class="fas fa-file-pdf"></i>&nbsp;Paper</a>
+        <a class="button is-dark is-rounded" href="#"><i class="ai ai-arxiv"></i>&nbsp;arXiv</a>
+        <a class="button is-dark is-rounded" href="#"><i class="fab fa-github"></i>&nbsp;Code</a>
+        <a class="button is-dark is-rounded" href="#"><i class="fa-regular fa-folder-open"></i>&nbsp;Data</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="abstract">
+  <div class="container is-max-desktop">
+    <h2 class="title is-3"><i class="fa-regular fa-file-lines"></i> Abstract</h2>
+    <div class="content">
+      <p>Choreography is not a mere sequence of improvised movements to music. Rather, it is a systematic creative process grounded in the structural interpretation of music. Choreographers design movements at the phrase level, tune them to musical beats and energy, and seamlessly connect phrases. In this paper, we propose HDC: A Hierarchical Diffusion model for Choreography, a framework inspired by the real-world workflow of choreography creation. HDC takes in-the-wild music as input and (1) divides it into phrases to generate beat-based dances, (2) enhances each dance using waveform-based features, and (3) generates the full choreography by concatenating all phrases and then enhances it with deep features extracted from Jukebox AI to resolve inter-phrase discontinuities and strengthen plausibility. Building on this hierarchical generation framework, we further introduce semantic text stylization. Semantic prompt such as “Like Michael Jackson” is interpreted by a large language model and mapped to controllable dance features that modulate the strength of each enhancement, allowing intuitive and high-level style conditioning. To evaluate whether the generated choreography adheres to real-world choreographic primitives, we propose new metrics comprising Phrase Diversity, Feature Alignment, and Text Stylization Score. Experimental results demonstrate that HDC outperforms state-of-the-art models in generating choreography and exhibits strong text stylization capability.</p>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="figure">
+  <div class="container is-max-desktop">
+    <h2 class="title is-3"><i class="fa-regular fa-image"></i> Paper Figure</h2>
+    <div class="figure-placeholder">
+      <div>
+        <p style="font-weight:600;">Insert Figure 1 Here</p>
+        <p style="font-size:0.9rem;">(e.g., static/images/figure1.png)</p>
+      </div>
+    </div>
+    <p class="figure-caption">Figure 1. HDC framework: phrase-level generation, waveform-aware enhancement, and global plausibility with optional text stylization.</p>
+  </div>
+</section>
+
+<section class="section" id="method">
+  <div class="container is-max-desktop">
+    <h2 class="title is-3"><i class="fa-solid fa-diagram-project"></i> Method</h2>
+    <div class="content">
+      <p>Inspired by choreographic creation theory, HDC interprets music and progressively completes the choreography through a hierarchical pipeline comprising four stages:</p>
+      <ol>
+        <li><strong>Phrase-level Beat-aware Generation:</strong> The input music is segmented into phrases—the minimal choreographic units—and an initial beat-aware dance is generated for each phrase.</li>
+        <li><strong>Waveform-aware Enhancement:</strong> Each beat-aware dance is refined by incorporating waveform information that reflects changes in musical energy.</li>
+        <li><strong>Global Plausibility Enhancement:</strong> All phrase-level dances are concatenated, and inter-phrase discontinuities are resolved to improve global naturalness and detail.</li>
+        <li><strong>Choreography Stylization with Semantic Text:</strong> Text prompts such as “Like Michael Jackson” are interpreted to modulate enhancement strengths, achieving high-level style conditioning.</li>
+      </ol>
+      <p>Enhancement refers to generating a target choreography that jointly incorporates the target intention with the reference dance. This is achieved via the <strong>DanceEdit</strong> module, which modulates diffusion timesteps without additional training, enabling the fusion of reference and condition intentions.</p>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="bibtex">
+  <div class="container is-max-desktop content">
+    <h2 class="title is-3"><i class="fa-solid fa-code"></i> BibTeX</h2>
+<pre><code>@inproceedings{kim2026hdc,
+  author    = {Jungsu Kim},
+  title     = {HDC: Hierarchical Diffusion Model for Choreography},
+  booktitle = {Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition (CVPR)},
+  year      = {2026},
+}</code></pre>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="container">
+    <div class="content has-text-centered">
+      <p>© <span id="year"></span> Jungsu Kim. Built with Bulma.</p>
+    </div>
+  </div>
+</footer>
+
+<script>
+  (function() {
+    var burger = document.querySelector('.navbar-burger');
+    var menu = document.getElementById('navMenu');
+    if (burger && menu) {
+      burger.addEventListener('click', function(){
+        burger.classList.toggle('is-active');
+        menu.classList.toggle('is-active');
+      });
+    }
+    document.getElementById('year').textContent = new Date().getFullYear();
+  })();
+</script>
+
+</body>
+</html>
